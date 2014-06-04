@@ -8,7 +8,7 @@ using TheProblemSolver.ASPNET.Helpers.WebApi;
 namespace AngularJS.ASPNET.Helpers.Specs.WebApi
 {
     [TestClass]
-    public class ReadOnlyApiControllerOfModel
+    public class ReadOnlyApiControllerOfModelIntSpecs
     {
         [TestMethod]
         public void GetShouldReturnAllModels()
@@ -35,7 +35,6 @@ namespace AngularJS.ASPNET.Helpers.Specs.WebApi
 
             // Assert
             result.Should().NotBeNull();
-            //result.Content.Should().NotBeNull();
             result.Content.ShouldBeEquivalentTo(new Model {Id = 1});
         }
 
@@ -57,7 +56,7 @@ namespace AngularJS.ASPNET.Helpers.Specs.WebApi
             public int Id { get; set; }
         }
 
-        private class ObjectApiController : ReadOnlyApiController<Model>
+        private class ObjectApiController : ReadOnlyApiController<Model, int>
         {
             private readonly List<Model> _list;
 

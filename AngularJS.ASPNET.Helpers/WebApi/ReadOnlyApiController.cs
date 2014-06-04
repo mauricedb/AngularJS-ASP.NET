@@ -3,16 +3,16 @@ using System.Web.Http;
 
 namespace TheProblemSolver.ASPNET.Helpers.WebApi
 {
-    public abstract class ReadOnlyApiController<T> : ApiController where T : class
+    public abstract class ReadOnlyApiController<TModel, TKey> : ApiController where TModel : class
     {
-        public IEnumerable<T> Get()
+        public IEnumerable<TModel> Get()
         {
             return GetAll();
         }
 
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult Get(TKey id)
         {
-            T result = GetSingle(id);
+            TModel result = GetSingle(id);
             if (result == null)
             {
                 return NotFound();
@@ -21,7 +21,7 @@ namespace TheProblemSolver.ASPNET.Helpers.WebApi
             return Ok(result);
         }
 
-        protected abstract IEnumerable<T> GetAll();
-        protected abstract T GetSingle(int id);
+        protected abstract IEnumerable<TModel> GetAll();
+        protected abstract TModel GetSingle(TKey id);
     }
 }
