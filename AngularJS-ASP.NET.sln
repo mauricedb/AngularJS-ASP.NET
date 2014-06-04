@@ -23,6 +23,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{566FD7
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJS.ASPNET.Helpers.Specs", "AngularJS.ASPNET.Helpers.Specs\AngularJS.ASPNET.Helpers.Specs.csproj", "{DFE87FCC-889B-4307-8CE2-3736CB55A6AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJS.ASPNET.Helpers", "AngularJS.ASPNET.Helpers\AngularJS.ASPNET.Helpers.csproj", "{301F359A-E313-47FF-8C0D-F5E1182A3862}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{614B39AA-919A-4AC6-93F3-0C743D3A4539}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{614B39AA-919A-4AC6-93F3-0C743D3A4539}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{614B39AA-919A-4AC6-93F3-0C743D3A4539}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFE87FCC-889B-4307-8CE2-3736CB55A6AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFE87FCC-889B-4307-8CE2-3736CB55A6AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFE87FCC-889B-4307-8CE2-3736CB55A6AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFE87FCC-889B-4307-8CE2-3736CB55A6AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{301F359A-E313-47FF-8C0D-F5E1182A3862}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{301F359A-E313-47FF-8C0D-F5E1182A3862}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{301F359A-E313-47FF-8C0D-F5E1182A3862}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{301F359A-E313-47FF-8C0D-F5E1182A3862}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
