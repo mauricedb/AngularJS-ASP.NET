@@ -1,18 +1,19 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace TheProblemSolver.ASPNET.Helpers.WebApi
 {
     public abstract class ReadOnlyApiController<TModel, TKey> : ApiController where TModel : class
     {
-        public IEnumerable<TModel> Get()
+        public async Task<IEnumerable<TModel>> Get()
         {
-            return GetAll();
+            return await GetAll();
         }
 
-        public IHttpActionResult Get(TKey id)
+        public async Task<IHttpActionResult> Get(TKey id)
         {
-            TModel result = GetSingle(id);
+            TModel result = await GetSingle(id);
             if (result == null)
             {
                 return NotFound();
@@ -21,7 +22,7 @@ namespace TheProblemSolver.ASPNET.Helpers.WebApi
             return Ok(result);
         }
 
-        protected abstract IEnumerable<TModel> GetAll();
-        protected abstract TModel GetSingle(TKey id);
+        protected abstract Task<IEnumerable<TModel>> GetAll();
+        protected abstract Task<TModel> GetSingle(TKey id);
     }
 }
