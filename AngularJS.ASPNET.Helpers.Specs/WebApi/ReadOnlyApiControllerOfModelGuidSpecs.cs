@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Http.Results;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -12,13 +13,13 @@ namespace AngularJS.ASPNET.Helpers.Specs.WebApi
     public class ReadOnlyApiControllerOfModelGuidSpecs
     {
         [TestMethod]
-        public void GetShouldReturnAllModels()
+        public async Task GetShouldReturnAllModels()
         {
             // Arrange
             var controller = new ObjectApiController();
 
             // Act
-            IEnumerable<Model> result = controller.Get();
+            IEnumerable<Model> result = await controller.Get();
 
             // Assert
             result.Should().NotBeNull();
@@ -26,14 +27,14 @@ namespace AngularJS.ASPNET.Helpers.Specs.WebApi
         }
 
         [TestMethod]
-        public void GetOneShouldReturnTheModel()
+        public async Task GetOneShouldReturnTheModel()
         {
             // Arrange
             var controller = new ObjectApiController();
 
 
             // Act
-            var result = controller.Get(ObjectApiController.Id1) as OkNegotiatedContentResult<Model>;
+            var result = await controller.Get(ObjectApiController.Id1) as OkNegotiatedContentResult<Model>;
 
             // Assert
             result.Should().NotBeNull();
@@ -41,13 +42,13 @@ namespace AngularJS.ASPNET.Helpers.Specs.WebApi
         }
 
         [TestMethod]
-        public void GetThreeShouldReturnNotFound()
+        public async Task GetThreeShouldReturnNotFound()
         {
             // Arrange
             var controller = new ObjectApiController();
 
             // Act
-            var result = controller.Get(Guid.NewGuid()) as NotFoundResult;
+            var result = await controller.Get(Guid.NewGuid()) as NotFoundResult;
 
             // Assert
             result.Should().NotBeNull();
@@ -74,14 +75,14 @@ namespace AngularJS.ASPNET.Helpers.Specs.WebApi
                 };
             }
 
-            protected override IEnumerable<Model> GetAll()
+            protected override Task<IEnumerable<Model>> GetAll()
             {
-                return _list;
+                return Task.FromResult(_list.AsEnumerable());
             }
 
-            protected override Model GetSingle(Guid id)
+            protected override Task<Model> GetSingle(Guid id)
             {
-                return _list.SingleOrDefault(m => m.Id == id);
+                return Task.FromResult(_list.SingleOrDefault(m => m.Id == id));
             }
         }
     }
